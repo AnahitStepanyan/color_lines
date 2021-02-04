@@ -1,0 +1,74 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: monospace;
+  font-weight: 100;
+  color: rgb(40, 39, 46);
+}
+
+div {
+  /* border: 1px solid black; */
+}
+
+#new-game {
+  padding: 10px 20px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+#wrapper {
+  margin: 10px auto;
+  text-align: center;
+}
+
+table {
+  margin: 10px auto;
+  border: 3px solid rgb(61, 59, 70);
+  border-radius: 5px;
+}
+
+td {
+  background: rgb(40, 39, 46);
+  height: 44px;
+  width: 44px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+
+.ball {
+  animation: fadein 0.8s;
+  margin: auto;
+  height: 33px;
+  width: 33px;
+  border-radius: 100%;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+@keyframes fadein {
+  0% {opacity:0;}
+	100% {opacity:1;}
+}
+
+.ball.selected {
+  animation: shadow 0.2s;
+  box-shadow: 0 0 6px 7px rgb(173, 173, 173);
+}
+
+.ball.fadeout {
+  opacity: 0;
+  animation: fadeout 1s;
+}
+
+@keyframes fadeout {
+  0% {opacity:1;}
+	100% {opacity:0;}
+}
+
+@keyframes shadow {
+  0% {box-shadow: 0 0 0 0;}
+  100%{box-shadow:  0 0 6px 7px rgb(173, 173, 173);}
+}
