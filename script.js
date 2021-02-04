@@ -141,7 +141,7 @@ let matrix = [];
 
 
 function initialize (size) {
-
+  scoreElem.innerHTML = 0;
   table.innerHTML = "";
 // rows
 for(let i = 0; i < size; i++){
