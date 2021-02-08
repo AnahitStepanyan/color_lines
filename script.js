@@ -238,9 +238,6 @@ function on_empty_cell_click(e) {
     } else {
       setTimeout(add_balls, 50);
     }
-
-  } else {
-    alert("NO WAY!");
   }
 }
 
