@@ -13,9 +13,19 @@ div {
 
 #new-game {
   padding: 10px 20px;
-  border-radius: 7px;
+  border-right: 2px solid rgb(61, 59, 70);
+  border-bottom: 2px solid rgb(61, 59, 70);
+  border-top: 2px solid rgb(157, 156, 167);
+  border-left: 2px solid rgb(157, 156, 167);
+  border-radius: 5px;
+  outline: none;
   cursor: pointer;
 }
+
+#new-game:active{
+  box-shadow: inset 0 0 5px rgb(111, 110, 117);
+}
+
 
 #wrapper {
   margin: 10px auto;
@@ -27,6 +37,7 @@ table {
   border: 3px solid rgb(61, 59, 70);
   border-radius: 5px;
 }
+
 
 td {
   background: rgb(40, 39, 46);
@@ -71,4 +82,36 @@ td {
 @keyframes shadow {
   0% {box-shadow: 0 0 0 0;}
   100%{box-shadow:  0 0 6px 7px rgb(173, 173, 173);}
+}
+
+
+@media (max-width: 431px) {
+  td {
+    height: 37px;
+    width: 37px;
+  }
+  .ball {
+    height: 33px;
+    width: 33px;
+  }
+}
+@media (max-width: 374px) {
+  td {
+    height: 34px;
+    width: 34px;
+  }
+  .ball {
+    height: 30px;
+    width: 30px;
+  }
+}
+@media (max-width: 374px) {
+  td {
+    height: 30px;
+    width: 30px;
+  }
+  .ball {
+    height: 25px;
+    width: 25px;
+  }
 }
