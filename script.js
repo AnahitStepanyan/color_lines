@@ -1,9 +1,7 @@
 "use strict";
 
-
 // matrix and table size
 const size = 9;
-// const size = prompt("enter your matrix size", 9);
 
 /* ------------- FUNCTIONS ------------- */
 
@@ -130,6 +128,7 @@ function no_empty_cells () {
 // all the nessesary variables
 let grid = document.querySelector("#grid");
 let scoreElem = document.querySelector("#score");
+let recordElem = document.querySelector("#record");
 let table = document.createElement("table");
 let colors = ["rgb(33, 224, 200)", "rgb(33, 66, 224)", "rgb(254, 226, 0)", "rgb(254, 130, 0)", "rgb(254, 4, 0)", "rgb(40, 221, 14)", "rgb(190, 14, 221)"];
 const colorsSize = colors.length;
@@ -141,38 +140,40 @@ let matrix = [];
 
 
 function initialize (size) {
-  scoreElem.innerHTML = 0;
+
   table.innerHTML = "";
-// rows
-for(let i = 0; i < size; i++){
-  matrix[i] = [];
-  
-  let tr = document.createElement('tr');
-  // columns
-  for(let j = 0; j < size; j++){
-    matrix[i][j] = 0; // fill zeros
+  scoreElem.innerHTML = 0;
+  recordElem.innerHTML = localStorage.getItem('lines-record') || 0;
+  // rows
+  for(let i = 0; i < size; i++){
+    matrix[i] = [];
+    
+    let tr = document.createElement('tr');
+    // columns
+    for(let j = 0; j < size; j++){
+      matrix[i][j] = 0; // fill zeros
 
-    // cells
-    let td = document.createElement('td');
-    td.id = 'cell-' + i + '-' + j;
-    td.dataset.x = i;
-    td.dataset.y = j;
-    tr.appendChild(td);
+      // cells
+      let td = document.createElement('td');
+      td.id = 'cell-' + i + '-' + j;
+      td.dataset.x = i;
+      td.dataset.y = j;
+      tr.appendChild(td);
 
-    // events on clicks
-    td.addEventListener('click', function(e){
-      if(matrix[i][j]) {
-        on_ball_click(e);
-      } else {
-        on_empty_cell_click(e);
-      }
-    });
+      // events on clicks
+      td.addEventListener('click', function(e){
+        if(matrix[i][j]) {
+          on_ball_click(e);
+        } else {
+          on_empty_cell_click(e);
+        }
+      });
+    }
+    table.appendChild(tr);
   }
-  table.appendChild(tr);
-}
-grid.appendChild(table);
-// first 3 random balls
-add_balls();
+  grid.appendChild(table);
+  // first 3 random balls
+  add_balls();
 }
 
 initialize(size);
@@ -368,6 +369,7 @@ function get_lines (cell) {
 
 /* -------------- REMOVE LINES ---------------- */
 function remove_line (lines_arr) {
+  let score = Number(scoreElem.innerHTML);
   let scoreToPlus;
   for (let k in lines_arr) {
     let lines = lines_arr[k];
@@ -391,7 +393,12 @@ function remove_line (lines_arr) {
     }
   }
 
-  scoreElem.innerHTML = Number(scoreElem.innerHTML) + scoreToPlus;
+  score += scoreToPlus;
+  if(score > Number(recordElem.innerHTML)){
+    localStorage.setItem('lines-record', score);
+    recordElem.innerHTML = score;
+  }
+  scoreElem.innerHTML = score;
 }
 
 
