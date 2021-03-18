@@ -103,12 +103,10 @@ function add_balls () {
 
 function game_over () {
   alert("Game Over :(");
-  let bool = confirm("Wanna play again?");
-  if(bool) {
+  if(confirm("Wanna play again?"))
     initialize(size);
-  } else {
+  else
     alert("Okay :) Thank You!");
-  }
 }
 
 function no_empty_cells () {
