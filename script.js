@@ -104,7 +104,7 @@ function add_balls () {
 function game_over () {
   alert("Game Over :(");
   if(confirm("Wanna play again?"))
-    initialize(size);
+    initialize();
   else
     alert("Okay :) Thank You!");
 }
@@ -137,7 +137,7 @@ let selected = false;
 let matrix = [];
 
 
-function initialize (size) {
+function initialize () {
 
   table.innerHTML = "";
   scoreElem.innerHTML = 0;
@@ -174,7 +174,7 @@ function initialize (size) {
   add_balls();
 }
 
-initialize(size);
+initialize();
 
 
 
@@ -401,7 +401,7 @@ function remove_line (lines_arr) {
 
 
 document.querySelector("#new-game").addEventListener('click', function(){
-  initialize(size);
+  initialize();
 });
 
 
